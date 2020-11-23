@@ -78,9 +78,31 @@ for (var first = 1; first < 7; first++) {
 var addStar = '';
 for (var line = 1; line <= 5; line++) {
     for (var star = 0; star < line; star++) {
-        console.log((addStar += '*'));
+        addStar += '*';
     }
-    console.log(addStar += '\n');
+    addStar += '\n';
 }
+console.log(addStar);
 
 // 12. 삼각형 출력하기 - pattern 2
+var tree = '';
+for (var v = 5; v >= 1; v--) { // line
+    for (var st = v; st < 6-v; st++) {
+        tree += ' ';
+    }
+    for (var st = 1; st <= v; st++) {
+        tree += '*';
+    }
+    tree += '\n';
+}
+console.log(tree);
+
+// 13. 삼각형 출력하기 - pattern 3
+var oneStar = '';
+for (var l = 5; l >= 1; l--) { // line
+    for (var t = 1; t <= l; t++) {
+        oneStar += '*';
+    }
+    oneStar += '\n';
+}
+console.log(oneStar);
