@@ -135,4 +135,4 @@ for (var i = 5; i >= 0; i--) {
 }
 console.log(star);
 
-// 15. 삼각형 출력하기 - pattern 5
+// 15. 정삼각형 출력하기
