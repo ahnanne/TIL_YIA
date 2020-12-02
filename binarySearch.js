@@ -7,7 +7,7 @@ function binarySearch(array, target) {
   
     while (start <= end) { // 핵심
       const mid = Math.floor((start + end) / 2);
-      // 퍼포먼스보다는 가독성과 유지보수성이 더 중요하므로, centerIndex를 while문 안에 선언
+      // 퍼포먼스보다는 가독성과 유지보수성이 더 중요하므로, mid를 while문 안에 선언
       // target이 중간값보다 큰지 작은지에 따라 분기가 나뉜다.
   
       if (target === array[mid]) return mid;
