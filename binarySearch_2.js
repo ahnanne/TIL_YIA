@@ -1,9 +1,13 @@
 let binarySearch = function (array, target) {
     let start = 0; // 시작 포인터(인덱스)
     let end = array.length - 1; // 끝 포인터(인덱스)
+    // console.log(end); // NaN
+    // console.log(array.length); // undefined -> 배열 및 유사배열 외의 일반 객체에는 length 속성 undefined
     // 선형 검색과 달리, 반복 작업을 몇 번 해야할지 예측할 수 없으므로 for문이 아닌 while문 사용
     // 반복문을 언제까지 돌릴지 고려
-    while (array && start <= end) { // array에 falsy 값 들어올 경우 대비하여 방어 코드 작성
+    while (array && (start <= end)) { // array에 falsy 값 들어올 경우 대비하여 방어 코드 작성
+        // 논리 연산자와 비교 연산자 간 연산 우선순위를 알 수 없으므로,
+        // 먼저 연산할 부분을 그룹 연산자로 감싸서 우선순위 표시
         let mid = Math.floor((start + end) / 2);
         // while문 안에 선언한 이유 - 가독성 때문
         // let으로 선언한 변수는 블록 레벨 스코프를 지원하므로,
