@@ -4,7 +4,8 @@ const $input = document.querySelector('input.num');
 const $result = document.querySelector('span.result');
 const $truncate = document.querySelector('span.truncate');
 
-// 짝수인지 홀수인지 - if문
+// 🚩짝수인지 홀수인지 - if문
+/*
 function evenOrOdd(num) {
   // 입력한 값이 정수가 아닌 실수일 경우 방어 코드
   if (num % 1) {
@@ -17,8 +18,18 @@ function evenOrOdd(num) {
   // 짝수일 경우 'Even' 반환
   else $result.textContent = 'Even';
 }
+*/
 
-// 짝수인지 홀수인지 - 삼항 조건 연산자
+// 🚩짝수인지 홀수인지 - 삼항 조건 연산자
+function evenOrOdd(num) {
+  // 입력한 값이 정수가 아닌 실수일 경우 방어 코드
+  if (num % 1) {
+    num = parseInt(num);
+    $truncate.textContent = '*소수점 이하 절사';
+  }
+
+  $result.textContent = num % 2 ? 'Odd' : 'Even';
+}
 
 // 💚이벤트 핸들러 등록
 $form.onsubmit = e => {
