@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 웹 접근성 고려하며 텍스트 숨기기 */
+    .hidden {
+      position: absolute !important;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(1px 1px 1px 1px);
+      /* IE6, IE7 */
+      clip: rect(1px, 1px, 1px, 1px);
+    }
+
+    form {
+      margin-bottom: 2rem;
+    }
+
+    .truncate {
+      display: block;
+    }
+    .result {
+      background-color: rgb(179, 140, 220);
+    }
+  </style>
+</head>
+
+<body>
+  <form>
+    <p>짝수일까요, 홀수일까요?</p>
+    <label for="numInput" class="hidden">1 이상의 정수 입력창</label>
+    <input type="text" id="numInput" class="num" placeholder="1 이상의 정수를 입력하세요." autocomplete="off" />
+    <button>확인</button>
+  </form>
+  <span class="truncate"></span>
+  <span class="result"></span>
+
+  <script src="./alg01.js"></script>
+</body>
+
+</html>
