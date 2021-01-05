@@ -7,17 +7,21 @@ function alphaString46(s) {
 
   // 인수를 전달받은 경우, 주어진 조건에 따라 불리언 값 반환
   else if (s.length >= 4 && s.length <= 6) {
-    for (let i = 0; i < s.length; i++) {
-      if (isNaN(+s[i]) === true) break;
-      return true;
-    }
+    // 인수로 전달받은 문자열이 숫자로만 이루어져 있는 경우 true 반환
+    if (/^\d+$/.test(s) === true) return true;
   }
+  
   return false;
 }
 
 console.log(alphaString46('1234')); // true
 console.log(alphaString46('9014')); // true
-console.log(alphaString46('723'));  // false
+console.log(alphaString46('723')); // false
 console.log(alphaString46('a234')); // false
-console.log(alphaString46(''));     // false
-console.log(alphaString46());       // false
+console.log(alphaString46('')); // false
+console.log(alphaString46()); // false
+
+console.log(alphaString46('9014^')); // false
+console.log(alphaString46('90 14')); // false
+console.log(alphaString46('90  0')); // false
+console.log(alphaString46('0000')); // true
