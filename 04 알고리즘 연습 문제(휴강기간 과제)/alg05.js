@@ -6,17 +6,19 @@ function toWeirdCase(s) {
 
   let result = '';
 
-  wordsArr.forEach((eachWord) => {
+  wordsArr.forEach(eachWord => {
+    // 고차 배열 함수를 사용하기 위해 스프레드 문법 사용하여 배열 만들어주기
     const copiedWord = [...eachWord];
+
     eachWord = copiedWord.map((eachLetter, index) => {
-      if (!(index % 2)) eachLetter = eachLetter.toUpperCase();
-      else eachLetter = eachLetter.toLowerCase();
+      if (!(index % 2)) eachLetter = eachLetter.toUpperCase(); // 짝
+      else eachLetter = eachLetter.toLowerCase(); // 홀
       return eachLetter;
     }).join('');
 
     result += eachWord + ' ';
   });
-  console.log(result);
+
   return result;
 }
 
