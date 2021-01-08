@@ -1,6 +1,6 @@
 // 핸드폰 번호 가리기
 function hideNumbers(str) {
-  // 고차 배열 함수를 사용하기 위해 배열 만들어주기
+  // 배열 고차 함수를 사용하기 위해 배열 만들어주기
   const copiedStr = [...str];
 
   const result = copiedStr.map((number, index) => {
