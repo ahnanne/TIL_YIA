@@ -1,5 +1,6 @@
 // 각 자릿수의 합 구하기
 function digitSum(n) {
+  // n은 100,000,000 이하의 정수
   if (n > 100000000) return false;
 
   // 배열 고차 함수 reduce를 사용하기 위해 n을 배열로 변환하기
