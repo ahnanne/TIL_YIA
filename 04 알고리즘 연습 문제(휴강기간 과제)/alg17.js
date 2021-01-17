@@ -1,8 +1,8 @@
 // 소수 찾기
 function numberOfPrime(n) {
+  // 2부터 n까지의 정수를 요소로 갖는 배열(arr) 만들기
   const arr = [];
 
-  // 2부터 n까지의 정수를 요소로 갖는 배열(arr) 만들기
   for (let i = 2; i <= n; i++) arr.push(i);
 
   // arr 중 소수만을 요소로 갖는 배열(copiedArr) 만들기
