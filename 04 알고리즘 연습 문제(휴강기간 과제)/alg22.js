@@ -7,6 +7,7 @@ function adder(x, y) {
   else if (x > y) {
     const arr = [];
     for (let i = 0; i <= x - y; i++) arr[i] = y + i;
+    // console.log(arr);
 
     // 합 구하기
     let sum = 0;
@@ -19,6 +20,7 @@ function adder(x, y) {
   else {
     const arr = [];
     for (let i = 0; i <= y - x; i++) arr[i] = x + i;
+    // console.log(arr);
 
     // 합 구하기
     let sum = 0;
@@ -32,3 +34,8 @@ console.log(adder(3, 5)); // 12
 console.log(adder(5, 3)); // 12
 console.log(adder(3, 3)); // 3
 console.log(adder(10, 1)); // 55
+console.log(adder(-3, -5)); // -12
+console.log(adder(-3, 3)); // 0
+console.log(adder(-5, -3)); // -12
+console.log(adder(0, -3)); // -6
+console.log(adder(-3, 0)); // -6
