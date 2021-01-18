@@ -2,6 +2,9 @@
 function generateRange(from, to) {
   const res = [];
 
+  // 방어코드(from >= to일 경우)
+  if (from >= to) return '시작 요소가 끝 요소보다 작아야 합니다.'
+
   for (let i = 0; i <= to - from; i++) res[i] = from + i;
 
   return res;
@@ -16,3 +19,4 @@ console.log(generateRange(27, 40));
   39, 40
 ]
 */
+console.log(generateRange(40, 27)); // 시작 요소가 끝 요소보다 작아야 합니다.
