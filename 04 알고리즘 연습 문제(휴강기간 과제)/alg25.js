@@ -1,5 +1,5 @@
 // 평균 구하기
-function average(array){
+function average(array) {
   let sum = 0;
   let cnt = 0;
 

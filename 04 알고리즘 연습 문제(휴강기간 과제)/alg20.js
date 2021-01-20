@@ -1,5 +1,5 @@
 // 하샤드 수
-function isHarshad(n){
+function isHarshad(n) {
   // 각 자릿수의 합 구하기
   let str = '';
   str += n;
