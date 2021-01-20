@@ -6,7 +6,7 @@ function adjacentElementsProduct(arr) {
   // 요소곱 구해서 resArr에 집어넣기
   let res = 0;
   arr.reduce((_, cur, index) => {
-    if (!arr[index + 1]) return;
+    if (arr[index + 1] === undefined) return;
     else {
       res = cur * arr[index + 1];
       resArr.push(res);
@@ -16,7 +16,7 @@ function adjacentElementsProduct(arr) {
   // resArr 중 가장 큰 값 구하기
   let max = -Infinity;
   resArr.reduce((_, cur) => {
-    if (cur > max) max = cur
+    if (cur > max) max = cur;
   }, 0);
 
   return max;
