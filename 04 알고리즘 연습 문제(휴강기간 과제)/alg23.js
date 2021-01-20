@@ -7,10 +7,9 @@ function adjacentElementsProduct(arr) {
   let res = 0;
   arr.reduce((_, cur, index) => {
     if (arr[index + 1] === undefined) return;
-    else {
-      res = cur * arr[index + 1];
-      resArr.push(res);
-    }
+
+    res = cur * arr[index + 1];
+    resArr.push(res);
   }, 1);
 
   // resArr 중 가장 큰 값 구하기
