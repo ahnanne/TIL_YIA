@@ -1,7 +1,7 @@
 // 평균 구하기
 function average(array){
-  let cnt = 0;
   let sum = 0;
+  let cnt = 0;
 
   array.reduce((_, curr) => {
     sum += curr;
