@@ -6,7 +6,7 @@ function specialSort(array) {
 
   array.forEach(num => {
     if (num < 0) negative.push(num);
-    else if (num >= 0) positive.push(num);
+    else positive.push(num);
   });
 
   negative.sort((a, b) => b - a);
