@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analog clock</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400" rel="stylesheet" />
+    <style>
+      *,
+      *::after,
+      *::before {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Open Sans';
+        font-weight: 300;
+        background-color: #d6e1e5;
+      }
+      .title {
+        color: #db5b33;
+        font-weight: 300;
+        text-align: center;
+      }
+      .clock {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        background-color: #fff;
+        border-radius: 50%;
+        margin: 40px auto;
+        border: 5px solid white;
+        box-shadow: inset 2px 3px 8px 0 rgba(0, 0, 0, 0.1);
+      }
+      .clock::after {
+        content: '';
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: black;
+        border-radius: 50%;
+        z-index: 100;
+      }
+
+      .clock > .hand {
+        /* 자바스크립트로 --deg 값을 변경한다. */
+        --deg: 0;
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        border: 1px solid white;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        transform-origin: bottom;
+        transform: translate3D(-50%, 0, 0) rotate(calc(var(--deg) * 1deg));
+        z-index: 10;
+      }
+      .clock > .hand.second {
+        width: 4px;
+        height: 120px;
+        background-color: red;
+      }
+      .clock > .hand.minute {
+        width: 6px;
+        height: 110px;
+        background-color: burlywood;
+      }
+      .clock > .hand.hour {
+        width: 8px;
+        height: 80px;
+        background-color: black;
+      }
+
+      /* 시간 구분 마크: .clock과 같은 크기의 블록 요소를 회전시킨다. */
+      .clock > .time {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .clock > .time.time1 {
+        transform: rotate(30deg);
+      }
+      .clock > .time.time2 {
+        transform: rotate(60deg);
+      }
+      .clock > .time.time3 {
+        transform: rotate(90deg);
+      }
+      .clock > .time.time4 {
+        transform: rotate(120deg);
+      }
+      .clock > .time.time5 {
+        transform: rotate(150deg);
+      }
+      .clock > .time.time6 {
+        transform: rotate(180deg);
+      }
+      .clock > .time.time7 {
+        transform: rotate(210deg);
+      }
+      .clock > .time.time8 {
+        transform: rotate(240deg);
+      }
+      .clock > .time.time9 {
+        transform: rotate(270deg);
+      }
+      .clock > .time.time10 {
+        transform: rotate(300deg);
+      }
+      .clock > .time.time11 {
+        transform: rotate(330deg);
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="title">Analog clock</h1>
+    <div class="clock">
+      <!-- 시계의 시침 -->
+      <div class="hand hour"></div>
+      <!-- 시계의 분침 -->
+      <div class="hand minute"></div>
+      <!-- 시계의 초침 -->
+      <div class="hand second"></div>
+      <!-- 시간 구분 마크 -->
+      <div class="time time1">|</div>
+      <div class="time time2">|</div>
+      <div class="time time3">|</div>
+      <div class="time time4">|</div>
+      <div class="time time5">|</div>
+      <div class="time time6">|</div>
+      <div class="time time7">|</div>
+      <div class="time time8">|</div>
+      <div class="time time9">|</div>
+      <div class="time time10">|</div>
+      <div class="time time11">|</div>
+      <div class="time time12">|</div>
+    </div>
+  </body>
+  <script>
+    // 현재 시각을 기준으로 시작점 설정
+    const hour = (() => {
+      const hourNow = new Date().getHours();
+      return hourNow >= 12 ? hourNow - 12 : hourNow;
+    })();
+    const minute = new Date().getMinutes();
+    const second = new Date().getSeconds();
+
+    // 시침은 1분에 0.5deg씩 회전
+    // 분침은 1초에 0.1deg씩 회전
+    // 초침은 1초에 6deg씩 회전
+    let hourDeg = (hour * 30) + (minute * 0.5);
+    let minuteDeg = (minute * 6) + (second * 0.1);
+    let secondDeg = second * 6;
+
+    const $handHour = document.querySelector('.hour');
+    const $handMinute = document.querySelector('.minute');
+    const $handSecond = document.querySelector('.second');
+
+    document.addEventListener('DOMContentLoaded', () => {
+      $handHour.style.transform = `rotate(${hourDeg}deg)`;
+      $handMinute.style.transform = `rotate(${minuteDeg}deg)`;
+      $handSecond.style.transform = `rotate(${secondDeg}deg)`;
+    });
+
+    // 시침 이동 타이머
+    setInterval(() => {
+      hourDeg += 0.5;
+      $handHour.style.transform = `rotate(${hourDeg}deg)`;
+      if (hourDeg === 360) hourDeg = 0;
+    }, 60000);
+
+    // 분침 이동 타이머
+    setInterval(() => {
+      minuteDeg += 0.1;
+      $handMinute.style.transform = `rotate(${minuteDeg}deg)`;
+      if (minuteDeg === 360) minuteDeg = 0;
+    }, 1000);
+
+    // 초침 이동 타이머
+    setInterval(() => {
+      secondDeg += 6;
+      $handSecond.style.transform = `rotate(${secondDeg}deg)`;
+      if (secondDeg === 360) secondDeg = 0;
+    }, 1000);
+  </script>
+</html>
