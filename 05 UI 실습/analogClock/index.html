@@ -152,10 +152,10 @@
     const minute = new Date().getMinutes();
     const second = new Date().getSeconds();
 
-    // 시침은 1분에 0.5deg씩 회전
+    // 시침은 1초에 0.01deg씩 회전
     // 분침은 1초에 0.1deg씩 회전
     // 초침은 1초에 6deg씩 회전
-    let hourDeg = (hour * 30) + (minute * 0.5);
+    let hourDeg = (hour * 30) + (minute * 0.5) + (0.5 / 60);
     let minuteDeg = (minute * 6) + (second * 0.1);
     let secondDeg = second * 6;
 
@@ -171,10 +171,10 @@
 
     // 시침 이동 타이머
     setInterval(() => {
-      hourDeg += 0.5;
+      hourDeg += 0.01;
       $handHour.style.transform = `rotate(${hourDeg}deg)`;
       if (hourDeg === 360) hourDeg = 0;
-    }, 60000);
+    }, 1000);
 
     // 분침 이동 타이머
     setInterval(() => {
