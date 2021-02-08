@@ -171,7 +171,7 @@
 
     // 시침 이동 타이머
     setInterval(() => {
-      hourDeg += 0.01;
+      hourDeg += 0.5 / 60;
       $handHour.style.transform = `rotate(${hourDeg}deg)`;
       if (hourDeg === 360) hourDeg = 0;
     }, 1000);
