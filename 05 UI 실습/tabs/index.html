@@ -157,33 +157,42 @@
       const tabsData = await fetchTabsData();
 
       // nav
-      document.querySelector('.tabs').innerHTML = '<nav></nav><span class="glider"></span>';
-      let navHtml = '';
+      const renderNav = (() => {
+        document.querySelector('.tabs').innerHTML = '<nav></nav><span class="glider"></span>';
+        let navHtml = '';
 
-      tabsData.forEach(({ id, title }, index) => {
-        navHtml += `<input type="radio" id="${id}" name="tab" ${index === 0 ? 'checked' : ''} />
-        <label class="tab" for="${id}">${title}</label>`;
-      });
+        tabsData.forEach(({ id, title }, index) => {
+          navHtml += `<input type="radio" id="${id}" name="tab" ${index === 0 ? 'checked' : ''} />
+          <label class="tab" for="${id}">${title}</label>`;
+        });
+
+        document.querySelector('nav').innerHTML = navHtml;
+      })();
 
       // div(content)
-      const $fragment = document.createDocumentFragment();
+      const renderContent = (() => {
+        const $fragment = document.createDocumentFragment();
 
-      tabsData.forEach(({ content }, index) => {
-        const $div = document.createElement('div');
-        $div.classList.add('tab-content');
-        if (!index) $div.classList.add('active');
-        const textNode = document.createTextNode(content);
-        $div.appendChild(textNode);
-        $fragment.appendChild($div);
-      });
+        tabsData.forEach(({ content }, index) => {
+          const $div = document.createElement('div');
+          $div.classList.add('tab-content');
+          if (!index) $div.classList.add('active');
+          const textNode = document.createTextNode(content);
+          $div.appendChild(textNode);
+          $fragment.appendChild($div);
+        });
 
-      document.querySelector('nav').innerHTML = navHtml;
-      document.querySelector('.tabs').appendChild($fragment);
+        document.querySelector('.tabs').appendChild($fragment);
+      })();
 
       document.querySelector('.spinner').style.display = 'none';
       document.querySelector(':root').style.setProperty('--tabs-length', tabsData.length);
     };
+
     document.addEventListener('DOMContentLoaded', render);
+
+    // glider
+    const moveGlider = () => {};
   </script>
 </body>
 
