@@ -65,6 +65,7 @@
       width: calc(var(--tab-width) * 1px);
       background-color: #fff;
       transition: 0.25s ease-out;
+      /* transform: translate(20px, 20px); */
     }
 
     input[type='radio'] {
@@ -178,6 +179,7 @@
           $div.classList.add('tab-content');
           if (!index) $div.classList.add('active');
           const textNode = document.createTextNode(content);
+          // 그냥 .textContent로 추가해줘도 된다고 하심.
           $div.appendChild(textNode);
           $fragment.appendChild($div);
         });
@@ -193,6 +195,18 @@
 
     // glider
     const moveGlider = () => {};
+
+    const showContent = targetId => {
+      [...document.querySelectorAll('.tab-content')].forEach((divNode, index) => {
+        divNode.classList.remove('active');
+        if (index + 1 === targetId) divNode.classList.add('active');
+      });
+    };
+
+    document.querySelector('.tabs').onclick = e => {
+      if (!e.target.matches('nav > input')) return;
+      showContent(+e.target.getAttribute('id'));
+    };
   </script>
 </body>
 
