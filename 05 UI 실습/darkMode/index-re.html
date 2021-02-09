@@ -16,6 +16,7 @@
       body {
         font-family: 'Open Sans';
         font-weight: 300;
+        opacity: 0;
       }
       .title {
         color: #db5b33;
@@ -91,29 +92,24 @@
       itaque sapiente consequatur, repellat velit voluptatum accusantium aperiam. Nostrum sunt reprehenderit nemo!
     </article>
     <script>
-      const theme = localStorage.getItem('theme');
+      const init = () => {
+        const theme = localStorage.getItem('theme');
 
-      const $toggleBtn = document.querySelector('.toggle-button');
-      const $body = document.querySelector('body');
-
-      // 로컬 스토리지에 저장된 테마 불러오기
-      document.addEventListener('DOMContentLoaded', () => {
-        if (localStorage.getItem('theme') === 'dark') $body.classList.toggle('dark');
+        // 로컬 스토리지에 저장된 테마 불러오기
         if (!theme) localStorage.setItem('theme', 'light');
-      });
-      
-      setTimeout(() => {
-        document.body.style.opacity = 1;
-      }, 300);
 
-      $toggleBtn.onclick = () => {
-        if (theme === 'light') {
-          localStorage.setItem('theme', 'dark');
-          $body.classList.toggle('dark');
-        } else {
-          localStorage.setItem('theme', 'light');
-          $body.classList.toggle('dark');
-        }
+        document.body.classList.toggle('dark', theme === 'dark');
+
+        setTimeout(() => {
+          document.body.style.opacity = 1;
+        }, 300);
+      };
+
+      document.addEventListener('DOMContentLoaded', init);
+
+      document.querySelector('.toggle-button').onclick = () => {
+        localStorage.setItem('theme', localStorage.getItem('theme') === 'dark' ? 'light' : 'dark');
+        document.body.classList.toggle('dark');
       };
     </script>
   </body>
