@@ -115,54 +115,50 @@
 
     <script>
       const $msg = document.querySelector('.popup-message');
-      const $popupBtn = document.querySelector('.popup-btn');
       const $layer = document.querySelector('.popup-layer');
       const $popup = document.querySelector('div.popup');
       const $userText = document.querySelector('#userText');
-      const $submitBtn = document.querySelector('.submit-btn');
-      const $closeBtn = document.querySelector('.close-btn');
 
-      $popupBtn.onclick = () => {
-        if ($msg.textContent) $msg.textContent = '';
+      const toggleHidden = () => {
         $popup.classList.toggle('hidden');
         $layer.classList.toggle('hidden');
+        $userText.value = '';
+      };
+
+      const renderText = () => {
+        $msg.textContent = `from popup : ${$userText.value}`;
+      };
+
+      document.querySelector('.popup-btn').onclick = () => {
+        if ($msg.textContent) $msg.textContent = '';
+        toggleHidden();
       };
       
-      $submitBtn.onclick = e => {
+      document.querySelector('.submit-btn').onclick = e => {
         e.preventDefault();
+
+        if (!e.target.matches('.submit')) return;
 
         if (e.target.matches('.ok')) {
           // if ($userText.value === '') return;
-          $popup.classList.toggle('hidden');
-          $layer.classList.toggle('hidden');
-          $msg.textContent = `from popup : ${$userText.value}`;
-          $userText.value = '';
-        } else if (e.target.matches('.cancel')) {
-          $popup.classList.toggle('hidden');
-          $layer.classList.toggle('hidden');
-          $userText.value = '';
-        } else return;
+          renderText();
+        }
+        toggleHidden();
       };
 
       $userText.onkeyup = e => {
         if (e.key === 'Enter') {
-          $popup.classList.toggle('hidden');
-          $layer.classList.toggle('hidden');
-          $msg.textContent = `from popup : ${$userText.value}`;
-          $userText.value = '';
+          renderText();
+          toggleHidden();
         }
       };
 
-      $closeBtn.onclick = () => {
-        $popup.classList.toggle('hidden');
-        $layer.classList.toggle('hidden');
-        $userText.value = '';
+      document.querySelector('.close-btn').onclick = () => {
+        toggleHidden();
       };
 
       $layer.onclick = () => {
-        $popup.classList.toggle('hidden');
-        $layer.classList.toggle('hidden');
-        $userText.value = '';
+        toggleHidden();
       };
     </script>
   </body>
