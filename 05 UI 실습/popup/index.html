@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Popup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <style>
+      *,
+      *::after,
+      *::before {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      body {
+        font-family: 'Open Sans';
+        font-weight: 300;
+      }
+      .title {
+        color: #db5b33;
+        font-size: 2rem;
+        font-weight: 300;
+        text-align: center;
+      }
+      /* 팝업을 위한 CSS */
+      .popup-message {
+        margin: 10px;
+      }
+      .popup-btn {
+        user-select: none;
+        cursor: pointer;
+        margin: 10px;
+        padding: 5px;
+        border-radius: 5px;
+      }
+      .hidden {
+        display: none;
+      }
+      .popup-layer {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, .3);
+      }
+      div.popup {
+        user-select: none;
+        background-color: #ffffff;
+        transform: translate(0, 20%);
+        margin: auto;
+        max-width: 520px;
+        min-height: 200px;
+        padding: 20px 30px;
+        border-radius: 7px;
+        box-shadow: 1px 2px 10px rgba(0, 0, 0, .1), 0 2px 10px rgba(0, 0, 0, .1), -1px 0 10px rgba(0, 0, 0, .1), 0 -1px 10px rgba(0, 0, 0, .1);
+      }
+      .close-btn {
+        display: inline-block;
+        cursor: pointer;
+        width: 100%;
+        line-height: 0;
+        text-align: right;
+        font-size: 32px;
+        font-weight: 500;
+      }
+      .popup-title {
+        margin: 0;
+      }
+      .popup-content {
+        margin: 30px 0 20px;
+      }
+      .submit-btn {
+        display: inline-block;
+      }
+      .submit {
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      .readable-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: polygon(0 0, 0 0, 0 0);
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="title">Popup</h1>
+
+    <!-- 팝업을 위한 HTML -->
+    <button class="popup-btn">toggle popup</button>
+    <div class="popup-layer hidden"></div>
+    <div class="popup hidden">
+      <span class="close-btn">×</span>
+      <section class="popup">
+        <h1 class="popup-title title">Hello!</h1>
+        <p class="popup-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac justo a mi accumsan sodales ut quis magna. Donec quis ullamcorper nisi, sed posuere felis.</p>
+        <form class="input-form">
+          <div class="input-content">
+            <label for="userText" class="readable-hidden">사용자 입력창</label>
+            <input type="text" id="userText" autocomplete="off">
+            <div class="submit-btn">
+              <input class="submit ok" type="submit" value="OK">
+              <button class="submit cancel">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </div>
+    <p class="popup-message"></p>
+
+    <script>
+      const $msg = document.querySelector('.popup-message');
+      const $popupBtn = document.querySelector('.popup-btn');
+      const $layer = document.querySelector('.popup-layer');
+      const $popup = document.querySelector('div.popup');
+      const $userText = document.querySelector('#userText');
+      const $submitBtn = document.querySelector('.submit-btn');
+      const $closeBtn = document.querySelector('.close-btn');
+
+      $popupBtn.onclick = () => {
+        if ($msg.textContent) $msg.textContent = '';
+        $popup.classList.toggle('hidden');
+        $layer.classList.toggle('hidden');
+      };
+      
+      $submitBtn.onclick = e => {
+        e.preventDefault();
+
+        if (e.target.matches('.ok')) {
+          // if ($userText.value === '') return;
+          $popup.classList.toggle('hidden');
+          $layer.classList.toggle('hidden');
+          $msg.textContent = `from popup : ${$userText.value}`;
+          $userText.value = '';
+        } else if (e.target.matches('.cancel')) {
+          $popup.classList.toggle('hidden');
+          $layer.classList.toggle('hidden');
+          $userText.value = '';
+        } else return;
+      };
+
+      $userText.onkeyup = e => {
+        if (e.key === 'Enter') {
+          $popup.classList.toggle('hidden');
+          $layer.classList.toggle('hidden');
+          $msg.textContent = `from popup : ${$userText.value}`;
+          $userText.value = '';
+        }
+      };
+
+      $closeBtn.onclick = () => {
+        $popup.classList.toggle('hidden');
+        $layer.classList.toggle('hidden');
+        $userText.value = '';
+      };
+
+      $layer.onclick = () => {
+        $popup.classList.toggle('hidden');
+        $layer.classList.toggle('hidden');
+        $userText.value = '';
+      };
+    </script>
+  </body>
+</html>
