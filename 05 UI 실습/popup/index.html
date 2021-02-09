@@ -31,6 +31,7 @@
       .popup-btn {
         user-select: none;
         cursor: pointer;
+        position: relative;
         margin: 10px;
         padding: 5px;
         border-radius: 5px;
@@ -93,6 +94,7 @@
 
     <!-- 팝업을 위한 HTML -->
     <button class="popup-btn">toggle popup</button>
+    <p class="popup-message"></p>
     <div class="popup-layer hidden"></div>
     <div class="popup hidden">
       <span class="close-btn">×</span>
@@ -111,26 +113,21 @@
         </form>
       </section>
     </div>
-    <p class="popup-message"></p>
 
     <script>
-      const $msg = document.querySelector('.popup-message');
-      const $layer = document.querySelector('.popup-layer');
-      const $popup = document.querySelector('div.popup');
       const $userText = document.querySelector('#userText');
 
       const toggleHidden = () => {
-        $popup.classList.toggle('hidden');
-        $layer.classList.toggle('hidden');
+        document.querySelector('div.popup').classList.toggle('hidden');
+        document.querySelector('.popup-layer').classList.toggle('hidden');
         $userText.value = '';
       };
 
       const renderText = () => {
-        $msg.textContent = `from popup : ${$userText.value}`;
+        document.querySelector('.popup-message').textContent = `from popup : ${$userText.value}`;
       };
 
       document.querySelector('.popup-btn').onclick = () => {
-        if ($msg.textContent) $msg.textContent = '';
         toggleHidden();
       };
       
@@ -157,7 +154,7 @@
         toggleHidden();
       };
 
-      $layer.onclick = () => {
+      document.querySelector('.popup-layer').onclick = () => {
         toggleHidden();
       };
     </script>
