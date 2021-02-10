@@ -147,6 +147,11 @@
           id: 3,
           title: 'JavaScript',
           content: `JavaScript(JS) is a lightweight interpreted or JIT-compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as Node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles.`
+        },
+        {
+          id: 4,
+          title: 'TEST',
+          content: '하잉'
         }
         ]),
         1000
@@ -159,12 +164,13 @@
 
       // nav
       const renderNav = (() => {
-        document.querySelector('.tabs').innerHTML = '<nav></nav><span class="glider"></span>';
+        document.querySelector('.tabs').innerHTML = '<nav></nav>';
         let navHtml = '';
 
         tabsData.forEach(({ id, title }, index) => {
           navHtml += `<input type="radio" id="${id}" name="tab" ${index === 0 ? 'checked' : ''} />
-          <label class="tab" for="${id}">${title}</label>`;
+          <label class="tab" for="${id}">${title}</label>
+          ${index === tabsData.length - 1 ? '<span class="glider"></span>' : ''}`;
         });
 
         document.querySelector('nav').innerHTML = navHtml;
