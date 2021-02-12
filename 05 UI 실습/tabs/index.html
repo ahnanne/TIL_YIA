@@ -209,6 +209,8 @@
       });
     };
 
+    // 이렇게 이벤트 위임하지 않고도, 위의 비동기 함수 안에서
+    // nav가 change 이벤트를 캐치하도록 하는 방법도 있음.
     document.querySelector('.tabs').onclick = e => {
       if (!e.target.matches('nav > input')) return;
       showContent(+e.target.getAttribute('id'));
