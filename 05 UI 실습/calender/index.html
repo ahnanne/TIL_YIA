@@ -29,6 +29,7 @@
       /* 뷰를 구현하세요. */
       .calendar {
         user-select: none;
+        margin: auto;
       }
       .calendar-nav {
         display: flex;
@@ -37,7 +38,7 @@
         width: calc(var(--calendar-size) / 20 * 7 * 1px);
         height: calc(var(--calendar-size) / 15 * 1px);
         padding: 7px;
-        margin-bottom: 10px;
+        margin: 0 auto 10px;
       }
       .calendar-nav > button {
         cursor: pointer;
@@ -63,6 +64,7 @@
         display: grid;
         grid-template-rows: repeat(7, calc(var(--calendar-size) / 20 * 1px));
         grid-template-columns: repeat(7, calc(var(--calendar-size) / 20 * 1px));
+        justify-content: center;
       }
       .grid-item {
         text-align: center;
