@@ -27,11 +27,45 @@
       }
 
       /* 뷰를 구현하세요. */
-
+      .calendar {
+        user-select: none;
+      }
+      .calendar-nav {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        width: calc(var(--calendar-size) / 20 * 7 * 1px);
+        height: calc(var(--calendar-size) / 15 * 1px);
+        padding: 7px;
+        margin-bottom: 10px;
+      }
+      .calendar-nav > button {
+        cursor: pointer;
+        align-self: center;
+        padding: 7px;
+        background-color: transparent;
+        border: none;
+      }
+      .calendar-nav > button:focus {
+        outline: none;
+      }
+      .calendar-nav > button:focus-visible {
+        outline: 2px solid #333333;
+      }
+      section.monthly {
+        text-align: center;
+        align-self: center;
+      }
+      section.monthly > p {
+        margin: 0;
+      }
       .calendar-grid {
         display: grid;
         grid-template-rows: repeat(7, calc(var(--calendar-size) / 20 * 1px));
         grid-template-columns: repeat(7, calc(var(--calendar-size) / 20 * 1px));
+      }
+      .grid-item {
+        text-align: center;
       }
     </style>
   </head>
