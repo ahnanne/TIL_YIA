@@ -144,7 +144,7 @@ const getPrevMonthDates = () => {
 
 // next month
 const getNextMonth = () => {
-  nextMonth = new Date(year, today.getMonth() + 1).getMonth();
+  nextMonth = new Date(year, currMonth + 1).getMonth();
 };
 
 const getNextMonthDates = () => {
@@ -163,7 +163,9 @@ document.addEventListener('DOMContentLoaded', () => {
   currFirstDay = getDays(today, 1);
 
   getPrevMonthDates();
+  getPrevMonth();
   getNextMonthDates();
+  getNextMonth();
 
   renderPrevDates();
   renderCurrDates();
@@ -175,7 +177,27 @@ document.querySelector('.prev-btn').onclick = () => {
   currMonth = prevMonth;
   currMonthDates = prevMonthDates;
   currFirstDay = getDays(new Date(year, currMonth), 1);
-  console.log(currMonth);
+
+  // 달력칸 초기화
+  const $childNodeArr = [...document.querySelectorAll('.grid-item.date')];
+  $childNodeArr.forEach($childNode => {
+    document.querySelector('.calendar-grid').removeChild($childNode);
+  });
+
+  getPrevMonthDates();
+  getPrevMonth();
+  getNextMonthDates();
+  getNextMonth();
+
+  renderPrevDates();
+  renderCurrDates();
+  renderNextDates();
+};
+
+document.querySelector('.next-btn').onclick = () => {
+  currMonth = nextMonth;
+  currMonthDates = nextMonthDates;
+  currFirstDay = getDays(new Date(year, currMonth), 1);
 
   // 달력칸 초기화
   const $childNodeArr = [...document.querySelectorAll('.grid-item.date')];
