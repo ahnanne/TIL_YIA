@@ -94,12 +94,18 @@ const monthToStr = month => {
   }
 };
 
+// render month & year
+const renderMonthStr = () => {
+  document.querySelector('.month').textContent = monthToStr(currMonth);
+  document.querySelector('.year').textContent = year;
+};
+
 // 이전 달 날짜들 render
 const renderPrevDates = () => {
   prevMonthDates.forEach((date, i) => {
     if (i >= prevMonthDates.length - currFirstDay) {
       const $div = document.createElement('div');
-      $div.setAttribute('class', 'grid-item date');
+      $div.setAttribute('class', 'grid-item date prev-date');
       $div.textContent = date;
       document.querySelector('.calendar-grid').appendChild($div);
     }
@@ -110,7 +116,10 @@ const renderPrevDates = () => {
 const renderCurrDates = () => {
   currMonthDates.forEach(date => {
     const $div = document.createElement('div');
-    $div.setAttribute('class', 'grid-item date');
+    $div.setAttribute('class', 'grid-item date curr-date');
+
+    if (!new Date(year, currMonth, date).getDay()) $div.classList.add('sunday');
+
     $div.textContent = date;
     document.querySelector('.calendar-grid').appendChild($div);
   });
@@ -123,7 +132,7 @@ const renderNextDates = () => {
   nextMonthDates.forEach((date, i) => {
     if (i >= x) return;
     const $div = document.createElement('div');
-    $div.setAttribute('class', 'grid-item date');
+    $div.setAttribute('class', 'grid-item date next-date');
     $div.textContent = date;
     document.querySelector('.calendar-grid').appendChild($div);
   });
@@ -151,12 +160,6 @@ const getNextMonthDates = () => {
   nextMonthDates = getDates(new Date(year, currMonth + 1));
 };
 
-// render month & year
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelector('.month').textContent = monthToStr(currMonth);
-  document.querySelector('.year').textContent = today.getFullYear();
-});
-
 // render dates
 document.addEventListener('DOMContentLoaded', () => {
   // 이달의 첫째날이 무슨 요일인지 구하기
@@ -167,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
   getNextMonthDates();
   getNextMonth();
 
+  renderMonthStr();
   renderPrevDates();
   renderCurrDates();
   renderNextDates();
@@ -175,6 +179,9 @@ document.addEventListener('DOMContentLoaded', () => {
 // 페이지 넘기기
 document.querySelector('.prev-btn').onclick = () => {
   currMonth = prevMonth;
+
+  if (currMonth === 11) year -= 1;
+
   currMonthDates = prevMonthDates;
   currFirstDay = getDays(new Date(year, currMonth), 1);
 
@@ -189,6 +196,7 @@ document.querySelector('.prev-btn').onclick = () => {
   getNextMonthDates();
   getNextMonth();
 
+  renderMonthStr();
   renderPrevDates();
   renderCurrDates();
   renderNextDates();
@@ -196,6 +204,9 @@ document.querySelector('.prev-btn').onclick = () => {
 
 document.querySelector('.next-btn').onclick = () => {
   currMonth = nextMonth;
+
+  if (currMonth === 0) year += 1;
+
   currMonthDates = nextMonthDates;
   currFirstDay = getDays(new Date(year, currMonth), 1);
 
@@ -210,6 +221,7 @@ document.querySelector('.next-btn').onclick = () => {
   getNextMonthDates();
   getNextMonth();
 
+  renderMonthStr();
   renderPrevDates();
   renderCurrDates();
   renderNextDates();

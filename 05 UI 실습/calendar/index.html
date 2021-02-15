@@ -14,6 +14,7 @@
         --sub-color-grey: #c4c5c4;
         --font-color-white: #fffffe;
         --font-color-grey: #b9b1b9;
+        --font-color-red: #db5b33;
       }
       *,
       *::after,
@@ -25,7 +26,7 @@
         font-weight: 300;
       }
       .title {
-        color: #db5b33;
+        color: var(--font-color-red);
         font-weight: 300;
         text-align: center;
       }
@@ -94,6 +95,13 @@
       }
       .grid-item.day {
         color: var(--font-color-grey);
+      }
+      .grid-item.prev-date,
+      .grid-item.next-date {
+        color: var(--font-color-grey);
+      }
+      .grid-item.sunday {
+        color: var(--font-color-red);
       }
     </style>
   </head>
