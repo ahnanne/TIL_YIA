@@ -10,7 +10,8 @@
     <style>
       :root {
         --calendar-size: 1000;
-        --main-color-babypink: #efb5dd;
+        --main-color-green: #738c86;
+        --sub-color-grey: #c4c5c4;
         --font-color-white: #fffffe;
         --font-color-grey: #b9b1b9;
       }
@@ -35,7 +36,7 @@
         margin: auto;
         width: calc(var(--calendar-size) / 20 * 7 * 1px);
         font-size: calc(var(--calendar-size) / 70 * 1px);
-        box-shadow: 1px -1px 15px var(--main-color-babypink), -1px -1px 15px var(--main-color-babypink), -3px -1px 15px var(--main-color-babypink);
+        box-shadow: 1px -1px 15px var(--sub-color-grey), -1px -1px 15px var(--sub-color-grey), -3px -1px 15px var(--sub-color-grey);
         border-radius: 10px;
       }
       .calendar-nav {
@@ -48,7 +49,7 @@
         margin: 0 auto;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
-        background-color: var(--main-color-babypink);
+        background-color: var(--main-color-green);
         color: var(--font-color-white);
         font-size: calc(var(--calendar-size) / 70 * 1px);
       }
@@ -91,7 +92,6 @@
         justify-self: center;
         text-align: center;
       }
-
       .grid-item.day {
         color: var(--font-color-grey);
       }
@@ -109,13 +109,13 @@
           <button class="next-btn"><i class='bx bxs-right-arrow'></i></button>
         </div>
         <div class="calendar-grid">
-          <div class="grid-item day">SUN</div>
-          <div class="grid-item day">MON</div>
-          <div class="grid-item day">TUE</div>
-          <div class="grid-item day">WED</div>
-          <div class="grid-item day">THU</div>
-          <div class="grid-item day">FRI</div>
-          <div class="grid-item day">SAT</div>
+          <div class="grid-item day sun">SUN</div>
+          <div class="grid-item day mon">MON</div>
+          <div class="grid-item day tue">TUE</div>
+          <div class="grid-item day wed">WED</div>
+          <div class="grid-item day thu">THU</div>
+          <div class="grid-item day fri">FRI</div>
+          <div class="grid-item day sat">SAT</div>
           <div class="grid-item">26</div>
           <div class="grid-item">27</div>
           <div class="grid-item">28</div>
