@@ -35,6 +35,8 @@
         margin: auto;
         width: calc(var(--calendar-size) / 20 * 7 * 1px);
         font-size: calc(var(--calendar-size) / 70 * 1px);
+        box-shadow: 1px -1px 15px var(--main-color-babypink), -1px -1px 15px var(--main-color-babypink), -3px -1px 15px var(--main-color-babypink);
+        border-radius: 10px;
       }
       .calendar-nav {
         display: flex;
@@ -49,7 +51,6 @@
         background-color: var(--main-color-babypink);
         color: var(--font-color-white);
         font-size: calc(var(--calendar-size) / 70 * 1px);
-        box-shadow: 1px -1px 15px var(--main-color-babypink), -1px -1px 15px var(--main-color-babypink), -3px -1px 15px var(--main-color-babypink);
       }
       .calendar-nav > button {
         cursor: pointer;
@@ -84,7 +85,6 @@
         padding: calc(var(--calendar-size) / 140 * 1px);
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
-        box-shadow: 1px -1px 15px var(--main-color-babypink), -1px -1px 15px var(--main-color-babypink), -3px -1px 15px var(--main-color-babypink);
       }
       .grid-item {
         align-self: center;
@@ -100,65 +100,65 @@
   <body>
     <h1 class="title">Calendar</h1>
     <div class="calendar">
-      <div class="calendar-nav">
-        <button class="prev-btn"><i class='bx bxs-left-arrow'></i></button>
-        <section class="monthly">
-          <p class="month">February</p>
-          <p class="year">2021</p>
-        </section>
-        <button class="next-btn"><i class='bx bxs-right-arrow'></i></button>
-      </div>
-      <div class="calendar-grid">
-        <div class="grid-item day">SUN</div>
-        <div class="grid-item day">MON</div>
-        <div class="grid-item day">TUE</div>
-        <div class="grid-item day">WED</div>
-        <div class="grid-item day">THU</div>
-        <div class="grid-item day">FRI</div>
-        <div class="grid-item day">SAT</div>
-        <div class="grid-item">26</div>
-        <div class="grid-item">27</div>
-        <div class="grid-item">28</div>
-        <div class="grid-item">29</div>
-        <div class="grid-item">30</div>
-        <div class="grid-item">1</div>
-        <div class="grid-item">2</div>
-        <div class="grid-item">3</div>
-        <div class="grid-item">4</div>
-        <div class="grid-item">5</div>
-        <div class="grid-item">6</div>
-        <div class="grid-item">7</div>
-        <div class="grid-item">8</div>
-        <div class="grid-item">9</div>
-        <div class="grid-item">10</div>
-        <div class="grid-item">11</div>
-        <div class="grid-item">12</div>
-        <div class="grid-item">13</div>
-        <div class="grid-item">14</div>
-        <div class="grid-item">15</div>
-        <div class="grid-item">16</div>
-        <div class="grid-item">17</div>
-        <div class="grid-item">18</div>
-        <div class="grid-item">19</div>
-        <div class="grid-item">20</div>
-        <div class="grid-item">21</div>
-        <div class="grid-item">22</div>
-        <div class="grid-item">23</div>
-        <div class="grid-item">24</div>
-        <div class="grid-item">25</div>
-        <div class="grid-item">26</div>
-        <div class="grid-item">27</div>
-        <div class="grid-item">28</div>
-        <div class="grid-item">29</div>
-        <div class="grid-item">30</div>
-        <div class="grid-item">31</div>
-        <div class="grid-item">1</div>
-        <div class="grid-item">2</div>
-        <div class="grid-item">3</div>
-        <div class="grid-item">4</div>
-        <div class="grid-item">5</div>
-        <div class="grid-item">6</div>
-      </div>
+        <div class="calendar-nav">
+          <button class="prev-btn"><i class='bx bxs-left-arrow'></i></button>
+          <section class="monthly">
+            <p class="month">February</p>
+            <p class="year">2021</p>
+          </section>
+          <button class="next-btn"><i class='bx bxs-right-arrow'></i></button>
+        </div>
+        <div class="calendar-grid">
+          <div class="grid-item day">SUN</div>
+          <div class="grid-item day">MON</div>
+          <div class="grid-item day">TUE</div>
+          <div class="grid-item day">WED</div>
+          <div class="grid-item day">THU</div>
+          <div class="grid-item day">FRI</div>
+          <div class="grid-item day">SAT</div>
+          <div class="grid-item">26</div>
+          <div class="grid-item">27</div>
+          <div class="grid-item">28</div>
+          <div class="grid-item">29</div>
+          <div class="grid-item">30</div>
+          <div class="grid-item">1</div>
+          <div class="grid-item">2</div>
+          <div class="grid-item">3</div>
+          <div class="grid-item">4</div>
+          <div class="grid-item">5</div>
+          <div class="grid-item">6</div>
+          <div class="grid-item">7</div>
+          <div class="grid-item">8</div>
+          <div class="grid-item">9</div>
+          <div class="grid-item">10</div>
+          <div class="grid-item">11</div>
+          <div class="grid-item">12</div>
+          <div class="grid-item">13</div>
+          <div class="grid-item">14</div>
+          <div class="grid-item">15</div>
+          <div class="grid-item">16</div>
+          <div class="grid-item">17</div>
+          <div class="grid-item">18</div>
+          <div class="grid-item">19</div>
+          <div class="grid-item">20</div>
+          <div class="grid-item">21</div>
+          <div class="grid-item">22</div>
+          <div class="grid-item">23</div>
+          <div class="grid-item">24</div>
+          <div class="grid-item">25</div>
+          <div class="grid-item">26</div>
+          <div class="grid-item">27</div>
+          <div class="grid-item">28</div>
+          <div class="grid-item">29</div>
+          <div class="grid-item">30</div>
+          <div class="grid-item">31</div>
+          <div class="grid-item">1</div>
+          <div class="grid-item">2</div>
+          <div class="grid-item">3</div>
+          <div class="grid-item">4</div>
+          <div class="grid-item">5</div>
+          <div class="grid-item">6</div>
+        </div>
     </div>
     <script></script>
   </body>
