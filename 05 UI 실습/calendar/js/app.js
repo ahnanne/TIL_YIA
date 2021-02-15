@@ -62,6 +62,38 @@ const getDays = (dateObj, date) => {
   return days(new Date(dateObj.setDate(date)).getDay());
 };
 
+// month to string
+const monthToStr = month => {
+  switch (month) {
+    case 0:
+      return 'January';
+    case 1:
+      return 'February';
+    case 2:
+      return 'March';
+    case 3:
+      return 'April';
+    case 4:
+      return 'May';
+    case 5:
+      return 'June';
+    case 6:
+      return 'July';
+    case 7:
+      return 'August';
+    case 8:
+      return 'September';
+    case 9:
+      return 'October';
+    case 10:
+      return 'November';
+    case 11:
+      return 'December';
+    default:
+      return '-';
+  }
+};
+
 // current month
 currMonth = today.getMonth();
 currMonthDates = getDates(today);
@@ -76,3 +108,9 @@ nextMonthDates = getDates(new Date(today.getFullYear(), today.getMonth() + 1));
 
 // 이달의 첫째날이 무슨 요일인지 구하기
 console.log(getDays(today, 1));
+
+// render month & year
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelector('.month').textContent = monthToStr(currMonth);
+  document.querySelector('.year').textContent = today.getFullYear();
+});
