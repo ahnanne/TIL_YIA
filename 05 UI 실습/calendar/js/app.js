@@ -1,5 +1,5 @@
 // 상태
-let today = new Date();
+const today = new Date();
 let year = new Date().getFullYear();
 
 let currMonth = 0;
@@ -133,6 +133,9 @@ const getMonth = () => {
   nextMonthDates = getDates(new Date(year, currMonth + 1));
 };
 
+// 콘솔 출력 양식
+const textForm = (y, m, d) => `${y}-${m < 10 ? '0' + m : m}-${d < 10 ? '0' + d : d}`;
+
 // render dates
 document.addEventListener('DOMContentLoaded', () => {
   // 이달의 첫째날이 무슨 요일인지 구하기
@@ -174,4 +177,19 @@ document.querySelector('.next-btn').onclick = () => {
   getMonth();
 
   renderMonth();
+};
+
+// 콘솔에 날짜 출력하기
+document.querySelector('.calendar-grid').onclick = e => {
+  if (e.target.matches('.prev-date')) {
+    console.log(textForm(prevMonth === 11 ? year - 1 : year, prevMonth + 1, e.target.textContent));
+  }
+
+  if (e.target.matches('.curr-date')) {
+    console.log(textForm(year, currMonth + 1, e.target.textContent));
+  }
+
+  if (e.target.matches('.next-date')) {
+    console.log(textForm(nextMonth === 0 ? year + 1 : year, nextMonth + 1, e.target.textContent));
+  }
 };
