@@ -1,5 +1,5 @@
 // 상태
-const today = new Date();
+let today = new Date();
 let year = new Date().getFullYear();
 
 let currMonth = 0;
@@ -135,6 +135,13 @@ document.addEventListener('DOMContentLoaded', () => {
   getMonth();
 
   renderMonth();
+});
+
+// 오늘 날짜 표시하기
+document.addEventListener('DOMContentLoaded', () => {
+  [...document.querySelectorAll('.curr-date')].forEach($div => {
+    if (+$div.textContent === new Date().getDate()) $div.classList.add('today');
+  });
 });
 
 // 페이지 넘기기

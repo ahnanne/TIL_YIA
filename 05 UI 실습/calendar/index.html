@@ -38,7 +38,7 @@
         width: calc(var(--calendar-size) / 20 * 7 * 1px);
         font-size: calc(var(--calendar-size) / 70 * 1px);
         box-shadow: 1px -1px 15px var(--sub-color-grey), -1px -1px 15px var(--sub-color-grey), -3px -1px 15px var(--sub-color-grey);
-        border-radius: 10px;
+        border-radius: calc(var(--calendar-size) / 140 * 1px);
       }
       .calendar-nav {
         display: flex;
@@ -48,8 +48,8 @@
         height: calc(var(--calendar-size) / 15 * 1px);
         padding: calc(var(--calendar-size) / 140 * 1px);
         margin: 0 auto;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
+        border-top-left-radius: calc(var(--calendar-size) / 140 * 1px);
+        border-top-right-radius: calc(var(--calendar-size) / 140 * 1px);
         background-color: var(--main-color-green);
         color: var(--font-color-white);
         font-size: calc(var(--calendar-size) / 70 * 1px);
@@ -102,6 +102,13 @@
       }
       .grid-item.sunday {
         color: var(--font-color-red);
+      }
+      .grid-item.today {
+        color: var(--font-color-white);
+        background-color: var(--main-color-green);
+        display: inline-block;
+        padding: calc(var(--calendar-size) / 140 * 1px);
+        border-radius: calc(var(--calendar-size) / 140 * 1px);
       }
     </style>
   </head>
