@@ -108,6 +108,13 @@ const renderMonth = () => {
   });
 };
 
+// remove dates(달력칸 초기화)
+const removeDates = () => {
+  [...document.querySelectorAll('.grid-item.date')].forEach($childNode => {
+    document.querySelector('.calendar-grid').removeChild($childNode);
+  });
+};
+
 // current month
 currMonth = today.getMonth();
 currMonthDates = getDates(today);
@@ -140,10 +147,7 @@ document.querySelector('.prev-btn').onclick = () => {
   currFirstDay = getDays(new Date(year, currMonth), 1);
 
   // 달력칸 초기화
-  const $childNodeArr = [...document.querySelectorAll('.grid-item.date')];
-  $childNodeArr.forEach($childNode => {
-    document.querySelector('.calendar-grid').removeChild($childNode);
-  });
+  removeDates();
 
   getMonth();
 
@@ -159,10 +163,7 @@ document.querySelector('.next-btn').onclick = () => {
   currFirstDay = getDays(new Date(year, currMonth), 1);
 
   // 달력칸 초기화
-  const $childNodeArr = [...document.querySelectorAll('.grid-item.date')];
-  $childNodeArr.forEach($childNode => {
-    document.querySelector('.calendar-grid').removeChild($childNode);
-  });
+  removeDates();
 
   getMonth();
 
