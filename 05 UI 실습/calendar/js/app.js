@@ -97,8 +97,14 @@ const renderMonth = () => {
     document.querySelector('.calendar-grid').appendChild($div);
   });
 
-  // 남은 칸 구하기
-  const x = 42 - [...document.querySelectorAll('.grid-item.date')].length;
+  // 오늘 날짜 표시하기
+  [...document.querySelectorAll('.curr-date')].forEach($div => {
+    if (new Date().getFullYear() === year && new Date().getMonth() === currMonth) {
+      if (new Date().getDate() === +$div.textContent) $div.classList.add('today');
+    }
+  });
+
+  const x = 42 - [...document.querySelectorAll('.grid-item.date')].length; // 남은 칸 구하기
   nextMonthDates.forEach((date, i) => {
     if (i >= x) return;
     const $div = document.createElement('div');
@@ -135,13 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
   getMonth();
 
   renderMonth();
-});
-
-// 오늘 날짜 표시하기
-document.addEventListener('DOMContentLoaded', () => {
-  [...document.querySelectorAll('.curr-date')].forEach($div => {
-    if (+$div.textContent === new Date().getDate()) $div.classList.add('today');
-  });
 });
 
 // 페이지 넘기기
